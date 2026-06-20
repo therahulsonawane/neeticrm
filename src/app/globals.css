@@ -1,26 +1,196 @@
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap");
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ── Tailwind v4 Theme Tokens ── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Brand Colors */
+  --color-ink: #0B1620;
+  --color-ink-light: #122030;
+  --color-ink-lighter: #1A2D40;
+  --color-porcelain: #F6F5F1;
+  --color-porcelain-dark: #EAE8E1;
+  --color-amber-signal: #FF8A3D;
+  --color-amber-signal-hover: #FF9D5C;
+  --color-amber-signal-glow: rgba(255, 138, 61, 0.35);
+
+  /* Channel Colors */
+  --color-whatsapp: #25D366;
+  --color-whatsapp-glow: rgba(37, 211, 102, 0.25);
+  --color-email: #5B6EF5;
+  --color-email-glow: rgba(91, 110, 245, 0.25);
+  --color-sms: #B26EFF;
+  --color-sms-glow: rgba(178, 110, 255, 0.25);
+  --color-voice: #FF5C7A;
+  --color-voice-glow: rgba(255, 92, 122, 0.25);
+
+  /* Semantic Colors */
+  --color-slate-custom: #8A97A6;
+  --color-danger: #EF4444;
+
+  /* Fonts */
+  --font-clash: "Clash Display", sans-serif;
+  --font-satoshi: "Satoshi", sans-serif;
+  --font-jetbrains: "JetBrains Mono", monospace;
+
+  /* Animation */
+  --animate-pulse-line: pulse-line 3s ease-in-out infinite;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
+  --animate-flow-fill: flow-fill 2s ease-in-out forwards;
+  --animate-node-appear: node-appear 0.5s ease-out forwards;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Keyframes ── */
+@keyframes pulse-line {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px currentColor; }
+  100% { box-shadow: 0 0 20px currentColor, 0 0 40px currentColor; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes flow-fill {
+  0% { stroke-dashoffset: 1; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes node-appear {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ── Base Styles ── */
+:root {
+  --background: #0B1620;
+  --foreground: #F6F5F1;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Satoshi", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Typography Utilities ── */
+.font-clash {
+  font-family: "Clash Display", sans-serif;
+}
+
+.font-satoshi {
+  font-family: "Satoshi", sans-serif;
+}
+
+.font-jetbrains {
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B1620;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1A2D40;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8A97A6;
+}
+
+/* ── Selection ── */
+::selection {
+  background: rgba(255, 138, 61, 0.3);
+  color: #F6F5F1;
+}
+
+/* ── Focus Styles ── */
+:focus-visible {
+  outline: 2px solid #FF8A3D;
+  outline-offset: 2px;
+}
+
+/* ── Skip Link ── */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #FF8A3D;
+  color: #0B1620;
+  padding: 8px 16px;
+  z-index: 100;
+  font-weight: 600;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ── Glassmorphism Utility ── */
+.glass {
+  background: rgba(11, 22, 32, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-light {
+  background: rgba(246, 245, 241, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* ── Channel Color Border Utility ── */
+.channel-border-whatsapp { border-left: 3px solid #25D366; }
+.channel-border-email { border-left: 3px solid #5B6EF5; }
+.channel-border-sms { border-left: 3px solid #B26EFF; }
+.channel-border-voice { border-left: 3px solid #FF5C7A; }
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
