@@ -481,11 +481,11 @@ export const FAQ_DATA = [
 
 // ── Navigation Links ──
 export const NAV_LINKS = [
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Features", href: "#features" },
-  { label: "WhatsApp Flows", href: "#whatsapp-flow-builder" },
-  { label: "Compare", href: "#comparison" },
-  { label: "FAQ", href: "#faq" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Features", href: "/#features" },
+  { label: "WhatsApp Flows", href: "/#whatsapp-flow-builder" },
+  { label: "Compare", href: "/#comparison" },
+  { label: "FAQ", href: "/#faq" },
 ] as const;
 
 // ── Proof Strip Items ──

@@ -29,7 +29,7 @@ export function Navbar() {
       >
         {/* Logo */}
         <a
-          href="#"
+          href="/"
           className="flex items-center gap-2 text-porcelain"
           id="nav-logo"
         >
@@ -54,10 +54,10 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="secondary" size="default" href="#pricing" id="nav-cta-demo">
+          <Button variant="secondary" size="default" href="/#pricing" id="nav-cta-demo">
             Book Demo
           </Button>
-          <Button variant="primary" size="default" href="#pricing" id="nav-cta-trial">
+          <Button variant="primary" size="default" href="/#pricing" id="nav-cta-trial">
             Start Free Trial
           </Button>
         </div>
@@ -112,10 +112,10 @@ export function Navbar() {
                 </a>
               ))}
               <div className="flex flex-col gap-3 mt-4">
-                <Button variant="primary" href="#pricing" id="nav-mobile-trial">
+                <Button variant="primary" href="/#pricing" id="nav-mobile-trial">
                   Start Free Trial
                 </Button>
-                <Button variant="secondary" href="#pricing" id="nav-mobile-demo">
+                <Button variant="secondary" href="/#pricing" id="nav-mobile-demo">
                   Book Demo
                 </Button>
               </div>
