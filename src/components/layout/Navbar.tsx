@@ -4,10 +4,14 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { NAV_LINKS } from "@/lib/constants";
+import { useDemoModal } from "@/context/DemoModalContext";
+
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { openDemoModal } = useDemoModal();
+
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -52,12 +56,11 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="secondary" size="default" href="/#pricing" id="nav-cta-demo">
+          <Button variant="secondary" size="default" onClick={openDemoModal} id="nav-cta-demo">
             Book Demo
           </Button>
-          <Button variant="primary" size="default" href="/#pricing" id="nav-cta-trial">
+          <Button variant="primary" size="default" href="https://leads-crm-phi.vercel.app/" id="nav-cta-trial">
             Start Free Trial
           </Button>
         </div>
@@ -112,10 +115,10 @@ export function Navbar() {
                 </a>
               ))}
               <div className="flex flex-col gap-3 mt-4">
-                <Button variant="primary" href="/#pricing" id="nav-mobile-trial">
+                <Button variant="primary" href="https://leads-crm-phi.vercel.app/" id="nav-mobile-trial">
                   Start Free Trial
                 </Button>
-                <Button variant="secondary" href="/#pricing" id="nav-mobile-demo">
+                <Button variant="secondary" onClick={() => { setIsOpen(false); openDemoModal(); }} id="nav-mobile-demo">
                   Book Demo
                 </Button>
               </div>

@@ -3,6 +3,8 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { HERO_FLOW_NODES, CHANNEL_COLORS, PROOF_ITEMS } from "@/lib/constants";
+import { useDemoModal } from "@/context/DemoModalContext";
+
 
 function HeroFlowDiagram() {
   const shouldReduceMotion = useReducedMotion();
@@ -141,6 +143,8 @@ function HeroFlowDiagram() {
 
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
+  const { openDemoModal } = useDemoModal();
+
 
   return (
     <section id="hero" className="relative bg-ink min-h-screen flex items-center overflow-hidden">
@@ -241,13 +245,13 @@ export function Hero() {
               delay: 0.4,
             }}
           >
-            <Button variant="primary" size="large" href="#pricing" id="hero-cta-trial">
+            <Button variant="primary" size="large" href="https://leads-crm-phi.vercel.app/" id="hero-cta-trial">
               Start Free Trial
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Button>
-            <Button variant="secondary" size="large" href="#pricing" id="hero-cta-demo">
+            <Button variant="secondary" size="large" onClick={openDemoModal} id="hero-cta-demo">
               Book Live Demo
             </Button>
           </motion.div>

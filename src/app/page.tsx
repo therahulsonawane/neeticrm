@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="flex-1 overflow-x-hidden">
         <Hero />
         <Problem />
         <Solution />

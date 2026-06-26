@@ -3,10 +3,14 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/Button";
+import { useDemoModal } from "@/context/DemoModalContext";
+
 
 export function FinalCTA() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { openDemoModal } = useDemoModal();
+
 
   return (
     <section
@@ -44,13 +48,13 @@ export function FinalCTA() {
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button variant="primary" size="large" href="#" id="final-cta-trial">
+          <Button variant="primary" size="large" href="https://leads-crm-phi.vercel.app/" id="final-cta-trial">
             Start Free Trial
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </Button>
-          <Button variant="secondary" size="large" href="#" id="final-cta-demo">
+          <Button variant="secondary" size="large" onClick={openDemoModal} id="final-cta-demo">
             Book Demo
           </Button>
         </div>

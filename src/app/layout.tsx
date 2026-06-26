@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { DemoModalProvider } from "@/context/DemoModalContext";
 import "./globals.css";
+
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -44,6 +46,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: {
+    canonical: "https://neeticrm.com",
+  },
 };
 
 export default function RootLayout({
@@ -71,7 +76,9 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        {children}
+        <DemoModalProvider>
+          {children}
+        </DemoModalProvider>
       </body>
     </html>
   );
