@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface DemoModalProps {
@@ -9,6 +10,7 @@ interface DemoModalProps {
 }
 
 export function DemoModal({ isOpen, onClose }: DemoModalProps) {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -112,6 +114,12 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1500));
       setStatus("success");
+      onClose();
+      const params = new URLSearchParams({
+        name: formData.name,
+        phone: formData.phone,
+      });
+      router.push(`/thank-you?${params.toString()}`);
     } catch (err) {
       setStatus("error");
     }
@@ -321,10 +329,10 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
 
                 <div className="bg-ink-light/50 border border-white/5 rounded-xl p-4 text-xs sm:text-sm text-slate-custom font-satoshi text-left space-y-3 leading-relaxed mb-6">
                   <p>
-                    📞 Our AI sales assistant, <span className="text-whatsapp font-semibold">Priya</span>, is dialing <span className="text-porcelain font-semibold">{formData.phone}</span> in approximately <span className="text-amber-signal font-semibold">2 minutes</span>.
+                    📞 Our AI sales assistant is dialing <span className="text-porcelain font-semibold">{formData.phone}</span> in approximately <span className="text-amber-signal font-semibold">2 minutes</span>.
                   </p>
                   <p>
-                    She will qualify your requirements, explain how the WhatsApp and multi-channel pipeline fits your workspace, and unlock your dashboard.
+                    The assistant will qualify your requirements, explain how the WhatsApp and multi-channel pipeline fits your workspace, and unlock your dashboard.
                   </p>
                   <p className="italic text-slate-custom/80 text-[11px] sm:text-xs">
                     Please keep your phone active and nearby!

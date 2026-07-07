@@ -60,7 +60,7 @@ export function Navbar() {
           <Button variant="secondary" size="default" onClick={openDemoModal} id="nav-cta-demo">
             Book Demo
           </Button>
-          <Button variant="primary" size="default" href="https://leads-crm-phi.vercel.app/" id="nav-cta-trial">
+          <Button variant="primary" size="default" href="https://app.neeticrm.com/" id="nav-cta-trial">
             Start Free Trial
           </Button>
         </div>
@@ -115,7 +115,7 @@ export function Navbar() {
                 </a>
               ))}
               <div className="flex flex-col gap-3 mt-4">
-                <Button variant="primary" href="https://leads-crm-phi.vercel.app/" id="nav-mobile-trial">
+                <Button variant="primary" href="https://app.neeticrm.com/" id="nav-mobile-trial">
                   Start Free Trial
                 </Button>
                 <Button variant="secondary" onClick={() => { setIsOpen(false); openDemoModal(); }} id="nav-mobile-demo">

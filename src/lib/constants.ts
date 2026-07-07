@@ -245,7 +245,7 @@ export const WHATSAPP_FLOW_NODES: FlowNodeData[] = [
       messages: [
         {
           from: "bot",
-          text: "✅ I'm connecting you with our sales specialist, Priya. She'll call you shortly!",
+          text: "✅ I'm connecting you with our sales specialist. You will receive a call shortly!",
         },
         { from: "user", text: "Perfect, thanks!" },
       ],
