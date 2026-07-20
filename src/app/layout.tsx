@@ -71,7 +71,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#0B1620" />
         <JsonLd />
       </head>
-      <body className="min-h-full flex flex-col font-satoshi bg-ink text-porcelain">
+      <body className="flex flex-col bg-ink min-h-full font-satoshi text-porcelain">
         {/* Skip Link */}
         <a href="#main-content" className="skip-link">
           Skip to main content
@@ -79,6 +79,35 @@ export default function RootLayout({
         <DemoModalProvider>
           {children}
         </DemoModalProvider>
+      
+<script>
+(function() {
+  var WEBHOOK = "https://https://deprecatory-sonja-dilemmatical.ngrok-free.dev/api/webhooks/inbound/cmrtalh7a0003y6kruba0i8dh";
+  var PARAMS  = ['gclid','utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+
+  var urlParams = new URLSearchParams(window.location.search);
+  PARAMS.forEach(function(p) {
+    var v = urlParams.get(p);
+    if (v) sessionStorage.setItem('_crm_' + p, v);
+  });
+
+  document.addEventListener('submit', function(e) {
+    var form = e.target;
+    var data = {};
+    new FormData(form).forEach(function(v, k) { data[k] = v; });
+    PARAMS.forEach(function(p) {
+      var v = sessionStorage.getItem('_crm_' + p);
+      if (v) data[p] = v;
+    });
+
+    fetch(WEBHOOK, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(data)
+    }).catch(function() {});
+  }, true);
+})();
+</script>
       </body>
     </html>
   );
